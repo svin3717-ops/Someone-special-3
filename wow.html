@@ -1,0 +1,566 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Forever❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#333;
+}
+
+#introScreen{
+  position:fixed;
+  inset:0;
+  background:#050505;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  transition:opacity 1.5s ease, visibility 1.5s ease;
+}
+
+#introScreen.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+#introText{
+  width:min(90%,760px);
+  text-align:center;
+  color:white;
+  padding:24px;
+}
+
+#introText h1{
+  margin:0 0 28px;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:clamp(42px,7vw,72px);
+  text-shadow:0 0 25px rgba(255,77,109,.7);
+  animation:heartbeat 1.6s infinite;
+}
+
+#introMessage{
+  min-height:70px;
+  margin:0;
+  font-size:clamp(20px,3vw,30px);
+  line-height:1.6;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+
+#introMessage.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  14%{transform:scale(1.06)}
+  28%{transform:scale(1)}
+  42%{transform:scale(1.04)}
+  70%{transform:scale(1)}
+}
+
+.heart{
+  position:fixed;
+  bottom:-40px;
+  color:#ff4d6d;
+  opacity:.55;
+  pointer-events:none;
+  z-index:0;
+  animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+  15%{opacity:.75}
+  100%{
+    transform:translateY(-120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.card{
+  position:relative;
+  z-index:2;
+  width:min(92vw,430px);
+  padding:34px 28px;
+  border-radius:30px;
+  background:rgba(255,255,255,.92);
+  text-align:center;
+  box-shadow:0 25px 60px rgba(80,25,40,.18);
+  animation:cardPop .7s ease;
+}
+
+@keyframes cardPop{
+  from{transform:translateY(20px) scale(.94);opacity:0}
+  to{transform:translateY(0) scale(1);opacity:1}
+}
+
+h1{
+  margin:0 0 18px;
+  color:#ff4d6d;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:clamp(34px,8vw,48px);
+  line-height:1.15;
+}
+
+p{
+  line-height:1.65;
+}
+
+button{
+  border:none;
+  padding:14px 27px;
+  margin:8px;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(255,77,109,.35);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+button:hover{
+  transform:scale(1.07);
+  box-shadow:0 14px 30px rgba(255,77,109,.45);
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+.no{
+  position:relative;
+  background:#f1f1f1;
+  color:#666;
+  box-shadow:none;
+}
+
+.dog{
+  width:130px;
+  height:130px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffd6df,#ff9fb2);
+  position:relative;
+  animation:bounce 2s infinite;
+  box-shadow:inset 0 -10px 20px rgba(180,50,80,.12);
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+.ear{
+  position:absolute;
+  width:46px;
+  height:62px;
+  top:7px;
+  background:#ff89a1;
+  border-radius:50% 50% 45% 45%;
+  z-index:-1;
+}
+.ear.left{left:-10px;transform:rotate(-22deg)}
+.ear.right{right:-10px;transform:rotate(22deg)}
+
+.eye{
+  width:12px;
+  height:12px;
+  background:#333;
+  border-radius:50%;
+  position:absolute;
+  top:48px;
+}
+.eye.left{left:40px}
+.eye.right{right:40px}
+
+.nose{
+  width:16px;
+  height:12px;
+  background:#333;
+  border-radius:50%;
+  position:absolute;
+  top:68px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.smile{
+  position:absolute;
+  width:32px;
+  height:18px;
+  border-bottom:3px solid #333;
+  border-radius:50%;
+  top:76px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.rose{
+  position:absolute;
+  bottom:-8px;
+  right:-6px;
+  font-size:30px;
+}
+
+.poem{
+  max-height:48vh;
+  overflow-y:auto;
+  border:2px dashed #ff7a9c;
+  padding:18px;
+  border-radius:18px;
+  color:#d93964;
+  background:#fff8fa;
+  font-size:15px;
+  line-height:1.75;
+  text-align:left;
+  box-shadow:inset 0 0 18px rgba(255,122,156,.08);
+}
+
+.poem::-webkit-scrollbar{width:8px}
+.poem::-webkit-scrollbar-thumb{
+  background:#ffb2c2;
+  border-radius:20px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.final-heart{
+  font-size:70px;
+  animation:heartbeat 1.3s infinite;
+  filter:drop-shadow(0 0 18px rgba(255,77,109,.45));
+}
+
+.signature{
+  margin-top:18px;
+  color:#ff4d6d;
+  font-weight:700;
+}
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:10px;
+  height:14px;
+  border-radius:3px;
+  pointer-events:none;
+  z-index:9999;
+  animation:confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translate3d(var(--drift),110vh,0) rotate(720deg);
+    opacity:.2;
+  }
+}
+
+@media (max-width:480px){
+  .card{
+    padding:28px 20px;
+    border-radius:24px;
+  }
+
+  .poem{
+    max-height:45vh;
+    font-size:14px;
+  }
+
+  button{
+    padding:13px 22px;
+  }
+}
+
+  @keyframes bouquetPop{
+    from{
+        opacity:0;
+        transform:scale(.4);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+<div id="introScreen">
+  <div id="introText">
+    <h1>❤️ Happy Girlfriend's Day</h1>
+    <p id="introMessage"></p>
+  </div>
+</div>
+
+<div class="card">
+
+  <section id="page1">
+    <h1>Hey Shreya💖</h1>
+    <p style="font-size:20px">
+      Will you be mine<br><strong>forever?</strong> 💘
+    </p>
+
+    <button onclick="showPage('page5')">Yes ❤️</button>
+    <button class="no" onmouseover="moveNo()" ontouchstart="moveNo()">No 🙈</button>
+
+    <p style="color:#ff4d6d;font-weight:700;margin-bottom:0">
+      Saying no will directly hurt me🥺
+    </p>
+  </section>
+
+  <section id="page5" class="hidden">
+    <div class="dog">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+      <div class="smile"></div>
+      <div class="rose">🌹</div>
+    </div>
+
+    <div class="poem">
+     To My Beautiful Girlfriend❤️
+      <br><br>
+     Happy Girlfriend Day,my Love.
+      <br><br>
+      Today is just another reminder of how lucky I am to have someone as kind,caring,
+      and beautiful as you in my life.
+      <br><br>
+      You make my days brigther, my heart happier, and my world more meaningful.
+     
+    </div>
+
+    <button onclick="showPage('page6')">Next 💖</button>
+  </section>
+
+  <section id="page6" class="hidden">
+    <div class="dog">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+      <div class="smile"></div>
+      <div class="rose">💝</div>
+    </div>
+
+    <div class="poem">
+      Thank you for your love, your patience, your endless support, and for always being by my side❤️
+      <br><br>
+      Every smile of yours is my favorite memory, and every moment with you becomes a story I'll always cherish and remember💝
+      <br><br>
+      At last I want to say that I love you very much Shreya❤️you're the only person who made me feel truly loved❤️.
+      <br><br>
+      By the way, there is something I wanted to ask you. Actually, I probably should have asked you before...
+    </div>
+
+    <button onclick="showPage('page7')">One Last Thing 💍</button>
+  </section>
+
+  <section id="page7" class="hidden">
+    <div class="final-heart">💗</div>
+    <h1>Will you be mine forever? 💍</h1>
+    <p style="font-size:18px;color:#ff4d6d">
+      Not just today...<br>
+      but every day. ❤️
+    </p>
+    <h1 style="font-size:38px">Happy Girlfriend's Day 💖</h1>
+    <p class="signature">From Your Dearest— Sarthak ❤️</p>
+      <button onclick="showBouquet()">
+        🎁 Click Here For Your Surprise
+    </button>
+
+<div id="bouquetBox"
+     style="display:none;margin-top:30px;animation:bouquetPop .8s;">
+
+    <div style="font-size:90px;">
+        💐
+    </div>
+
+    <div style="font-size:38px;">
+        🌹🌹🌹🌹🌹
+    </div>
+
+    <div style="font-size:38px;">
+        🌹🌹🌹🌹🌹
+    </div>
+
+    <div style="font-size:38px;">
+        🌹🌹🌹🌹🌹
+    </div>
+
+    <p style="
+        color:#ff4d6d;
+        font-size:22px;
+        font-weight:bold;
+        margin-top:20px;">
+
+        These roses are for the most beautiful girl in my life ❤️
+
+    </p>
+
+</div>
+
+  </section>
+
+</div>
+
+<script>
+
+const introLines = [
+  "Every love story is beautiful... ❤️",
+  "But ours is my favorite. 🌹",
+  "From — Sarthak ❤️"
+];
+
+let introIndex = 0;
+const introScreen = document.getElementById("introScreen");
+const introMessage = document.getElementById("introMessage");
+
+function playIntro(){
+  if(introIndex < introLines.length){
+    introMessage.classList.remove("show");
+
+    setTimeout(() => {
+      introMessage.textContent = introLines[introIndex];
+      introMessage.classList.add("show");
+      introIndex += 1;
+      setTimeout(playIntro,2200);
+    },500);
+  }else{
+    setTimeout(() => {
+      introScreen.classList.add("hide");
+      setTimeout(() => introScreen.remove(),1600);
+    },1300);
+  }
+}
+
+playIntro();
+
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = Math.random() > .25 ? "❤" : "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = 14 + Math.random() * 24 + "px";
+  heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(),10000);
+}
+
+setInterval(createHeart,350);
+
+function showPage(id){
+  ["page1","page5","page6","page7"].forEach(pageId => {
+    document.getElementById(pageId).classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  if(id === "page7"){
+    launchConfetti();
+  }
+}
+
+function moveNo(){
+  const btn = document.querySelector(".no");
+  const x = Math.random() * 220 - 110;
+  const y = Math.random() * 160 - 80;
+  btn.style.transform = `translate(${x}px,${y}px)`;
+}
+
+function launchConfetti(){
+  const colors = ["#ff4d6d","#ffd166","#7bdff2","#b2f7ef","#f7aef8","#ffffff"];
+
+  for(let i=0;i<140;i++){
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDuration = 2.5 + Math.random() * 2.5 + "s";
+    piece.style.animationDelay = Math.random() * .7 + "s";
+    piece.style.setProperty("--drift",(Math.random()*240-120)+"px");
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(),6000);
+  }
+}
+function showBouquet() {
+
+    const bouquet = document.getElementById("bouquetBox");
+
+    bouquet.style.display = "block";
+
+    bouquet.scrollIntoView({
+        behavior: "smooth"
+    });
+
+    launchRosePetals();
+
+}
+function launchRosePetals(){
+
+    for(let i = 0; i < 40; i++){
+
+        const petal = document.createElement("div");
+
+        petal.innerHTML = "🌹";
+
+        petal.style.position = "fixed";
+        petal.style.left = Math.random()*100 + "vw";
+        petal.style.top = "-40px";
+        petal.style.fontSize = (20 + Math.random()*15) + "px";
+        petal.style.zIndex = "99999";
+        petal.style.transition = "transform 5s linear, opacity 5s linear";
+
+        document.body.appendChild(petal);
+
+        setTimeout(()=>{
+            petal.style.transform =
+            `translate(${Math.random()*200-100}px,110vh) rotate(${Math.random()*720}deg)`;
+            petal.style.opacity = "0";
+        },50);
+
+        setTimeout(()=>{
+            petal.remove();
+        },5000);
+
+    }
+}
+
+</script>
+
+</body>
+</html>
